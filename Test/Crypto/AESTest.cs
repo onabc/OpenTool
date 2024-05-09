@@ -9,7 +9,7 @@ namespace Test.Crypto
         [SetUp]
         public void Setup()
         {
-            aes = new AES("xgkj0123456abcde", "0000000000000000");
+            aes = new AES("0000000000000000", "0000000000000000");
         }
 
         [Test]

@@ -9,7 +9,7 @@ namespace Test.Crypto
         [SetUp]
         public void Setup()
         {
-            sm4 = new SM4("xgkj0123456abcde", "0000000000000000");
+            sm4 = new SM4("0000000000000000", "0000000000000000");
         }
 
         [Test]
