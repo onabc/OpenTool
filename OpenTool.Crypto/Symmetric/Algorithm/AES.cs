@@ -2,6 +2,9 @@
 
 namespace OpenTool.Crypto.Symmetric
 {
+    /// <summary>
+    /// AES 对称算法
+    /// </summary>
     public class AES : SymmetricCrypto
     {
         protected override SymmetricAlgorithm Algorithm => SymmetricAlgorithm.AES;

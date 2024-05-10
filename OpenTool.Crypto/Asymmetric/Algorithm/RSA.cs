@@ -1,16 +1,15 @@
-﻿using OpenTool.Core.Extensions;
-using OpenTool.Crypto.Enum;
-using Org.BouncyCastle.Crypto.Generators;
-using Org.BouncyCastle.Crypto.Parameters;
+﻿using OpenTool.Crypto.Enum;
 using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Security;
-using System.Security.Cryptography;
-using AsymmetricAlgorithm = OpenTool.Crypto.Enum.AsymmetricAlgorithm;
+using Org.BouncyCastle.Crypto.Generators;
 using Org.BouncyCastle.OpenSsl;
-using System.Security.Cryptography.X509Certificates;
+using Org.BouncyCastle.Security;
+using AsymmetricAlgorithm = OpenTool.Crypto.Enum.AsymmetricAlgorithm;
 
 namespace OpenTool.Crypto.Asymmetric
 {
+    /// <summary>
+    /// RSA 非对称算法
+    /// </summary>
     public class RSA : AsymmetricCrypto
     {
         protected override AsymmetricAlgorithm Algorithm => AsymmetricAlgorithm.RSA;
@@ -30,7 +29,7 @@ namespace OpenTool.Crypto.Asymmetric
         /// </summary>
         /// <param name="xmlPrivateKey">私钥</param>
         /// <param name="xmlPublicKey">公钥</param>
-        public void CreateKeys(out string privateKey, out string publicKey)
+        public static void CreateKeys(out string privateKey, out string publicKey)
         {
             // RSAKeyPairGenerator
             RsaKeyPairGenerator rsaKeyPairGen = new RsaKeyPairGenerator();
@@ -42,13 +41,13 @@ namespace OpenTool.Crypto.Asymmetric
             publicKey = ConvertPem(keyPair.Public);
         }
 
-        private string ConvertPem(AsymmetricKeyParameter keyParameters)
+        private static string ConvertPem(AsymmetricKeyParameter keyParameters)
         {
-            TextWriter textWriter = new StringWriter();
-            PemWriter pemWriter1 = new PemWriter(textWriter);
-            pemWriter1.WriteObject(keyParameters);
-            pemWriter1.Writer.Flush();
-            return textWriter.ToString();
+            StringWriter stringWriter = new StringWriter();
+            PemWriter pemWriter = new PemWriter(stringWriter);
+            pemWriter.WriteObject(keyParameters);
+            pemWriter.Writer.Flush();
+            return stringWriter.GetStringBuilder().ToString();
         }
     }
 }

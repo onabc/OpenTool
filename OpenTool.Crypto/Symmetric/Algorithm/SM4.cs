@@ -3,7 +3,7 @@
 namespace OpenTool.Crypto.Symmetric
 {
     /// <summary>
-    /// 国密SM4
+    /// 国密SM4 对称算法
     /// </summary>
     public class SM4 : SymmetricCrypto
     {
