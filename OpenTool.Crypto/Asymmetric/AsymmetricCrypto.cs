@@ -1,10 +1,8 @@
 ﻿using OpenTool.Core.Extensions;
 using OpenTool.Crypto.Enum;
 using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Security;
-using System.Diagnostics.CodeAnalysis;
-using System.Text;
+using System;
 
 namespace OpenTool.Crypto.Asymmetric
 {
@@ -35,9 +33,15 @@ namespace OpenTool.Crypto.Asymmetric
             return _bufferedCipher.DoFinal(bytes);
         }
 
-        public string DecryptFromBase64(string str, KeyType keyType) => Decrypt(str.Base64ToBytes(), keyType).BytesToString();
+        public string DecryptFromBase64(string str, KeyType keyType)
+        {
+            return Decrypt(str.Base64ToBytes(), keyType).BytesToString();
+        }
 
-        public string DecryptFromHex(string str, KeyType keyType) => Decrypt(str.HexToBytes(), keyType).BytesToString();
+        public string DecryptFromHex(string str, KeyType keyType)
+        {
+            return Decrypt(str.HexToBytes(), keyType).BytesToString();
+        }
 
         public byte[] Encrypt(byte[] bytes, KeyType keyType)
         {
@@ -47,17 +51,19 @@ namespace OpenTool.Crypto.Asymmetric
             return _bufferedCipher.DoFinal(bytes);
         }
 
-        public string EncryptToBase64(string str, KeyType keyType) => Encrypt(str.StringToBytes(), keyType).BytesToBase64String();
+        public string EncryptToBase64(string str, KeyType keyType)
+        {
+            return Encrypt(str.StringToBytes(), keyType).BytesToBase64String();
+        }
 
-        public string EncryptToHex(string str, KeyType keyType) => Encrypt(str.StringToBytes(), keyType).BytesToHexString();
+        public string EncryptToHex(string str, KeyType keyType)
+        {
+            return Encrypt(str.StringToBytes(), keyType).BytesToHexString();
+        }
 
         protected ICipherParameters GetCipherParametersByKeyType(KeyType keyType)
         {
-            var parameters = keyType switch
-            {
-                KeyType.PublicKey => _publicKey,
-                KeyType.PrivateKey => _privateKey,
-            };
+            var parameters = keyType == KeyType.PublicKey ? _publicKey : _privateKey;
             if (parameters is null) throw new ArgumentNullException(nameof(parameters));
             return parameters;
         }

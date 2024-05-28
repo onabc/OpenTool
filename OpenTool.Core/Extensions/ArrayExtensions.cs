@@ -1,4 +1,6 @@
-﻿namespace OpenTool.Core.Extensions
+﻿using System;
+
+namespace OpenTool.Core.Extensions
 {
     public static class ArrayExtensions
     {

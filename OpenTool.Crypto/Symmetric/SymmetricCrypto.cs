@@ -24,7 +24,7 @@ namespace OpenTool.Crypto.Symmetric
         {
         }
 
-        public SymmetricCrypto([NotNull] string algorithm, ICipherParameters key)
+        public SymmetricCrypto(string algorithm, ICipherParameters key)
         {
             _bufferedCipher = CipherUtilities.GetCipher(algorithm);
             _key = key;
@@ -59,9 +59,15 @@ namespace OpenTool.Crypto.Symmetric
             return _bufferedCipher.DoFinal(bytes);
         }
 
-        public string DecryptFromBase64(string str) => Decrypt(str.Base64ToBytes()).BytesToString();
+        public string DecryptFromBase64(string str)
+        {
+            return Decrypt(str.Base64ToBytes()).BytesToString();
+        }
 
-        public string DecryptFromHex(string str) => Decrypt(str.HexToBytes()).BytesToString();
+        public string DecryptFromHex(string str)
+        {
+            return Decrypt(str.HexToBytes()).BytesToString();
+        }
 
         public byte[] Encrypt(byte[] data)
         {
@@ -70,8 +76,14 @@ namespace OpenTool.Crypto.Symmetric
             return _bufferedCipher.DoFinal(data);
         }
 
-        public string EncryptToBase64(string str) => Encrypt(str.StringToBytes()).BytesToBase64String();
+        public string EncryptToBase64(string str)
+        {
+            return Encrypt(str.StringToBytes()).BytesToBase64String();
+        }
 
-        public string EncryptToHex(string str) => Encrypt(str.StringToBytes()).BytesToHexString();
+        public string EncryptToHex(string str)
+        {
+            return Encrypt(str.StringToBytes()).BytesToHexString();
+        }
     }
 }

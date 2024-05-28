@@ -1,6 +1,7 @@
 ﻿using OpenTool.Core.Extensions;
 using OpenTool.Crypto.Enum;
 using Org.BouncyCastle.Crypto;
+using System;
 
 namespace OpenTool.Crypto.Digest
 {

@@ -1,11 +1,11 @@
-﻿using System.Collections.Immutable;
+﻿using System.Collections.Generic;
 
 namespace OpenTool.Core.Util
 {
     public static class BooleanUtil
     {
-        private static readonly IEnumerable<string> TrueList = new List<string> { "true", "yes", "y", "t", "ok", "1", "on", "是", "对", "真", "對", "√" };
-        private static readonly IEnumerable<string> FalseList = new List<string> { "false", "no", "n", "f", "0", "off", "否", "错", "假", "錯", "×" };
+        private static readonly List<string> TrueList = new List<string> { "true", "yes", "y", "t", "ok", "1", "on", "是", "对", "真", "對", "√" };
+        private static readonly List<string> FalseList = new List<string> { "false", "no", "n", "f", "0", "off", "否", "错", "假", "錯", "×" };
 
         /// <summary>
         /// 转换字符串为boolean值

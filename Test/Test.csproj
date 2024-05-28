@@ -21,4 +21,9 @@
     <ProjectReference Include="..\OpenTool\OpenTool.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Core\IO\" />
+    <Folder Include="Core\Util\" />
+  </ItemGroup>
+
 </Project>

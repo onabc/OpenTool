@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.Linq;
 
 namespace OpenTool.Core.Extensions
 {
@@ -15,11 +17,19 @@ namespace OpenTool.Core.Extensions
         /// <returns></returns>
         public static string GetEnumDescription<T>(this T enumValue) where T : Enum
         {
-            string? description = (enumValue.GetType().GetField(enumValue.ToString())?
+            string description = enumValue.ToString();
+            try
+            {
+                description = (enumValue.GetType().GetField(enumValue.ToString())
                 .GetCustomAttributes(typeof(DescriptionAttribute), inherit: true)
-                .FirstOrDefault() as DescriptionAttribute)?
+                .FirstOrDefault() as DescriptionAttribute)
                 .Description;
-            return description ?? enumValue.ToString();
+            }
+            catch (Exception)
+            {
+            }
+
+            return description;
         }
     }
 }

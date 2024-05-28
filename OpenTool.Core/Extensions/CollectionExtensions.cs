@@ -1,4 +1,8 @@
-﻿namespace OpenTool.Core.Extensions
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace OpenTool.Core.Extensions
 {
     public static class CollectionExtensions
     {

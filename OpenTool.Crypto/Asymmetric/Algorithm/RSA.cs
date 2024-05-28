@@ -3,6 +3,7 @@ using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Generators;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Security;
+using System.IO;
 using AsymmetricAlgorithm = OpenTool.Crypto.Enum.AsymmetricAlgorithm;
 
 namespace OpenTool.Crypto.Asymmetric

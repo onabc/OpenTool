@@ -1,4 +1,6 @@
-﻿namespace OpenTool.Core.Util
+﻿using System;
+
+namespace OpenTool.Core.Util
 {
     /// <summary>
     /// 时间戳工具类

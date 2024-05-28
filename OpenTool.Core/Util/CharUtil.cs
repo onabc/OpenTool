@@ -3,16 +3,6 @@
     public static class CharUtil
     {
         /// <summary>
-        /// 是否为ASCII字符，ASCII字符位于0~127之间
-        /// </summary>
-        /// <param name="ch"></param>
-        /// <returns></returns>
-        public static bool IsAscii(char ch)
-        {
-            return char.IsAscii(ch);
-        }
-
-        /// <summary>
         /// 检查字符是否为小写字母，小写字母指a~z
         /// </summary>
         /// <param name="ch"></param>
