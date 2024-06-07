@@ -1,0 +1,18 @@
+﻿using OpenTool.Core;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Test.Core
+{
+    internal class AddAction : AbstractAction<int>
+    {
+        public override async Task DoHandlerAsync(int context)
+        {
+            context += 10;
+            await Task.CompletedTask;
+        }
+    }
+}
