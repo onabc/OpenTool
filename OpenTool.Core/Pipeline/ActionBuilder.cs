@@ -1,4 +1,4 @@
-﻿namespace OpenTool.Core
+﻿namespace OpenTool.Core.Pipeline
 {
     public class ActionBuilder<T>
     {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
-namespace OpenTool.Core
+namespace OpenTool.Core.Pipeline
 {
     public class AbstractPipeline<T>
     {

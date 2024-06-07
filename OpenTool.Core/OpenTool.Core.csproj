@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="System.Threading.Tasks.Dataflow" Version="8.0.0" />
+    <PackageReference Include="YamlDotNet" Version="15.1.6" />
   </ItemGroup>
 
 </Project>

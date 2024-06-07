@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace OpenTool.Core
+namespace OpenTool.Core.Pipeline
 {
     public abstract class AbstractAction<T>
     {

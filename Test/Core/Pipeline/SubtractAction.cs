@@ -1,4 +1,4 @@
-﻿using OpenTool.Core;
+﻿using OpenTool.Core.Pipeline;
 using System;
 using System.Collections.Generic;
 using System.Linq;
