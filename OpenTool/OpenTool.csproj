@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OpenTool.Core\OpenTool.Core.csproj" />
     <ProjectReference Include="..\OpenTool.Crypto\OpenTool.Crypto.csproj" />
+    <ProjectReference Include="..\OpenTool.Extension\OpenTool.Extension.csproj" />
   </ItemGroup>
 
 </Project>
