@@ -9,7 +9,7 @@
     <parent>
         <groupId>cn.luxio</groupId>
         <artifactId>opentool</artifactId>
-        <version>1.0.1</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>opentool-all</artifactId>
@@ -19,13 +19,13 @@
         <dependency>
             <groupId>cn.luxio</groupId>
             <artifactId>opentool-core</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>cn.luxio</groupId>
             <artifactId>opentool-designpattern</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

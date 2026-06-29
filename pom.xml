@@ -6,7 +6,7 @@
 
     <groupId>cn.luxio</groupId>
     <artifactId>opentool</artifactId>
-    <version>1.0.1</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
 
     <name>OpenTool</name>
@@ -41,6 +41,8 @@
     </scm>
 
     <properties>
+        <revision>1.0.1</revision>
+
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -76,6 +78,32 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- 源码插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
