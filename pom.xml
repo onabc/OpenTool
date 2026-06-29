@@ -6,12 +6,18 @@
 
     <groupId>cn.luxio</groupId>
     <artifactId>opentool</artifactId>
-    <version>1.0.0</version>
-    <packaging>jar</packaging>
+    <version>1.0.1</version>
+    <packaging>pom</packaging>
 
-    <name>opentool</name>
+    <name>OpenTool</name>
     <description>Java工具类库</description>
     <url>https://github.com/onabc/OpenTool</url>
+
+    <modules>
+        <module>opentool-all</module>
+        <module>opentool-core</module>
+        <module>opentool-designpattern</module>
+    </modules>
 
     <licenses>
         <license>
@@ -35,10 +41,38 @@
     </scm>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <junit.version>5.10.3</junit.version>
+        <lombok.version>1.18.34</lombok.version>
+
+        <!-- 项目版本号 -->
+        <opentool-vision>1.0.0</opentool-vision>
     </properties>
+
+    <dependencies>
+        <!-- 全局单元测试 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+<!--            <scope>test</scope>-->
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
