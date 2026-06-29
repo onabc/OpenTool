@@ -8,28 +8,29 @@
 
     <parent>
         <groupId>cn.luxio</groupId>
-        <artifactId>opentool</artifactId>
-        <version>1.0.1</version>
+        <artifactId>opentool-parent</artifactId>
+        <version>${revision}</version>
     </parent>
 
-    <artifactId>opentool-all</artifactId>
+    <artifactId>opentool</artifactId>
     <name>${project.artifactId}</name>
 
     <dependencies>
         <dependency>
             <groupId>cn.luxio</groupId>
             <artifactId>opentool-core</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>cn.luxio</groupId>
             <artifactId>opentool-designpattern</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
     <build>
+        <finalName>opentool</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -44,6 +45,7 @@
                         <configuration>
                             <!-- 创建源码jar -->
                             <createSourcesJar>true</createSourcesJar>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
                             <artifactSet>
                                 <includes>
                                     <include>${project.groupId}:*:*</include>

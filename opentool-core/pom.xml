@@ -8,8 +8,8 @@
 
     <parent>
         <groupId>cn.luxio</groupId>
-        <artifactId>opentool</artifactId>
-        <version>1.0.1</version>
+        <artifactId>opentool-parent</artifactId>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>opentool-core</artifactId>

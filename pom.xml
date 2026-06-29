@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.luxio</groupId>
-    <artifactId>opentool</artifactId>
-    <version>1.0.1</version>
+    <artifactId>opentool-parent</artifactId>
+    <version>${revision}</version>
     <packaging>pom</packaging>
 
     <name>OpenTool</name>
@@ -14,7 +14,7 @@
     <url>https://github.com/onabc/OpenTool</url>
 
     <modules>
-        <module>opentool-all</module>
+        <module>opentool</module>
         <module>opentool-core</module>
         <module>opentool-designpattern</module>
     </modules>
@@ -41,15 +41,15 @@
     </scm>
 
     <properties>
+        <!-- 项目版本号 -->
+        <revision>1.0.1</revision>
+
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <junit.version>5.10.3</junit.version>
         <lombok.version>1.18.34</lombok.version>
-
-        <!-- 项目版本号 -->
-        <opentool-vision>1.0.0</opentool-vision>
     </properties>
 
     <dependencies>
@@ -76,6 +76,32 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- 源码插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

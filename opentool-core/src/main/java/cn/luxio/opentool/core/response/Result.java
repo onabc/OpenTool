@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 
 /**
  * 响应结构体
- * @param <T> data包装类型
+ * @param <T> 包装类型
  */
 @Data
 @Accessors(chain = true)
