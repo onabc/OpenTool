@@ -15,4 +15,25 @@
     <artifactId>opentool-designpattern</artifactId>
     <name>${project.artifactId}</name>
     <description>设计模式封装</description>
+
+    <properties>
+        <spring.version>7.0.8</spring.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.luxio</groupId>
+            <artifactId>opentool-core</artifactId>
+            <version>${project.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 </project>
