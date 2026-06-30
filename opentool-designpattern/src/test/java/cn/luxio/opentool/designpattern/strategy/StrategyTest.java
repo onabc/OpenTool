@@ -1,77 +1,72 @@
 package cn.luxio.opentool.designpattern.strategy;
 
 import cn.luxio.opentool.designpattern.strategy.enums.StrategyType;
-import cn.luxio.opentool.designpattern.strategy.handler.*;
+import cn.luxio.opentool.designpattern.strategy.handler.FirstHandler;
+import cn.luxio.opentool.designpattern.strategy.handler.SecondHandler;
+import cn.luxio.opentool.designpattern.strategy.handler.StrategyFactoryImpl;
+import cn.luxio.opentool.designpattern.strategy.handler.StrategyHandler;
+import cn.luxio.opentool.designpattern.strategy.handler.UnknownHandler;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Configuration
+@ComponentScan(basePackageClasses = StrategyHandler.class)
+@SpringJUnitConfig(StrategyTest.class)
 public class StrategyTest {
+
+    @Autowired
+    private StrategyFactoryImpl strategyFactory;
+
+    @Autowired
+    private List<StrategyHandler> strategyHandlers;
 
     @Test
     public void getShouldReturnFirstHandler() {
-        FirstHandler firstHandler = new FirstHandler();
-        StrategyFactoryImpl strategyFactory =
-                createStrategyFactory(firstHandler, new SecondHandler(), new UnknownHandler());
-
         StrategyHandler strategyHandler = strategyFactory.get(StrategyType.FIRST);
 
-        assertSame(firstHandler, strategyHandler);
         assertInstanceOf(FirstHandler.class, strategyHandler);
         assertDoesNotThrow(strategyHandler::doHandler);
     }
 
     @Test
     public void getShouldReturnSecondHandler() {
-        SecondHandler secondHandler = new SecondHandler();
-        StrategyFactoryImpl strategyFactory =
-                createStrategyFactory(new FirstHandler(), secondHandler, new UnknownHandler());
-
         StrategyHandler strategyHandler = strategyFactory.get(StrategyType.SECOND);
 
-        assertSame(secondHandler, strategyHandler);
         assertInstanceOf(SecondHandler.class, strategyHandler);
         assertDoesNotThrow(strategyHandler::doHandler);
     }
 
     @Test
-    public void containsShouldReturnTrueWhenStrategyExists() {
-        StrategyFactoryImpl strategyFactory =
-                createStrategyFactory(new FirstHandler(), new SecondHandler());
+    public void getShouldReturnUnknownHandler() {
+        StrategyHandler strategyHandler = strategyFactory.get(StrategyType.UNKNOWN);
 
+        assertInstanceOf(UnknownHandler.class, strategyHandler);
+        assertDoesNotThrow(strategyHandler::doHandler);
+    }
+
+    @Test
+    public void containsShouldReturnTrueWhenStrategyExists() {
         assertTrue(strategyFactory.contains(StrategyType.FIRST));
         assertTrue(strategyFactory.contains(StrategyType.SECOND));
+        assertTrue(strategyFactory.contains(StrategyType.UNKNOWN));
     }
 
     @Test
-    public void containsShouldReturnFalseWhenStrategyDoesNotExist() {
-        StrategyFactoryImpl strategyFactory =
-                createStrategyFactory(new FirstHandler(), new SecondHandler());
-
-        assertFalse(strategyFactory.contains(StrategyType.UNKNOWN));
-    }
-
-    @Test
-    public void getShouldThrowWhenStrategyDoesNotExist() {
-        StrategyFactoryImpl strategyFactory =
-                createStrategyFactory(new FirstHandler(), new SecondHandler());
-
-        assertThrows(IllegalArgumentException.class, () -> strategyFactory.get(StrategyType.UNKNOWN));
-    }
-
-    private StrategyFactoryImpl createStrategyFactory(
-            StrategyHandler... strategyHandlers
-    ) {
-        return new StrategyFactoryImpl(
-                List.of(strategyHandlers)
-        );
+    public void componentScanShouldInjectAllStrategyHandlers() {
+        assertEquals(3, strategyHandlers.size());
+        assertTrue(strategyHandlers.stream().anyMatch(FirstHandler.class::isInstance));
+        assertTrue(strategyHandlers.stream().anyMatch(SecondHandler.class::isInstance));
+        assertTrue(strategyHandlers.stream().anyMatch(UnknownHandler.class::isInstance));
     }
 
 }
