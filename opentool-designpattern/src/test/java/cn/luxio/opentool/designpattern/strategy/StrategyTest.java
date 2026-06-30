@@ -3,7 +3,7 @@ package cn.luxio.opentool.designpattern.strategy;
 import cn.luxio.opentool.designpattern.strategy.enums.StrategyType;
 import cn.luxio.opentool.designpattern.strategy.handler.FirstHandler;
 import cn.luxio.opentool.designpattern.strategy.handler.SecondHandler;
-import cn.luxio.opentool.designpattern.strategy.handler.StrategyFactoryImpl;
+import cn.luxio.opentool.designpattern.strategy.handler.KunStrategyFactory;
 import cn.luxio.opentool.designpattern.strategy.handler.StrategyHandler;
 import cn.luxio.opentool.designpattern.strategy.handler.UnknownHandler;
 import org.junit.jupiter.api.Test;
@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class StrategyTest {
 
     @Autowired
-    private StrategyFactoryImpl strategyFactory;
+    private KunStrategyFactory strategyFactory;
 
     @Autowired
     private List<StrategyHandler> strategyHandlers;
@@ -37,6 +37,20 @@ public class StrategyTest {
 
         assertInstanceOf(FirstHandler.class, strategyHandler);
         assertDoesNotThrow(strategyHandler::doHandler);
+    }
+
+    @Test
+    public void findShouldReturnMatchedStrategy() {
+        assertTrue(strategyFactory.find(StrategyType.FIRST).isPresent());
+        assertInstanceOf(FirstHandler.class, strategyFactory.find(StrategyType.FIRST).orElseThrow());
+    }
+
+    @Test
+    public void getShouldThrowWhenStrategyDoesNotExist() {
+        KunStrategyFactory strategyFactory = new KunStrategyFactory(List.of(new FirstHandler()));
+
+        assertThrows(IllegalArgumentException.class, () -> strategyFactory.get(StrategyType.SECOND));
+        assertTrue(strategyFactory.find(StrategyType.SECOND).isEmpty());
     }
 
     @Test
@@ -73,19 +87,19 @@ public class StrategyTest {
     @Test
     public void constructorShouldRejectDuplicateStrategyKey() {
         assertThrows(IllegalArgumentException.class, () ->
-                new StrategyFactoryImpl(List.of(new FirstHandler(), new FirstHandler()))
+                new KunStrategyFactory(List.of(new FirstHandler(), new FirstHandler()))
         );
     }
 
     @Test
     public void constructorShouldRejectNullStrategies() {
-        assertThrows(NullPointerException.class, () -> new StrategyFactoryImpl(null));
+        assertThrows(NullPointerException.class, () -> new KunStrategyFactory(null));
     }
 
     @Test
     public void constructorShouldRejectNullStrategy() {
         assertThrows(NullPointerException.class, () ->
-                new StrategyFactoryImpl(java.util.Collections.singletonList(null))
+                new KunStrategyFactory(java.util.Collections.singletonList(null))
         );
     }
 

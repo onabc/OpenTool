@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class StrategyFactoryImpl extends DefaultStrategyFactory<StrategyType, StrategyHandler> {
-    public StrategyFactoryImpl(List<StrategyHandler> strategies) {
+public class KunStrategyFactory extends DefaultStrategyFactory<StrategyType, StrategyHandler> {
+    public KunStrategyFactory(List<StrategyHandler> strategies) {
         super(strategies);
     }
 }
