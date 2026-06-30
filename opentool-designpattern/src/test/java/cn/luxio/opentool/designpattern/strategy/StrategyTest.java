@@ -17,6 +17,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Configuration
@@ -67,6 +68,25 @@ public class StrategyTest {
         assertTrue(strategyHandlers.stream().anyMatch(FirstHandler.class::isInstance));
         assertTrue(strategyHandlers.stream().anyMatch(SecondHandler.class::isInstance));
         assertTrue(strategyHandlers.stream().anyMatch(UnknownHandler.class::isInstance));
+    }
+
+    @Test
+    public void constructorShouldRejectDuplicateStrategyKey() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new StrategyFactoryImpl(List.of(new FirstHandler(), new FirstHandler()))
+        );
+    }
+
+    @Test
+    public void constructorShouldRejectNullStrategies() {
+        assertThrows(NullPointerException.class, () -> new StrategyFactoryImpl(null));
+    }
+
+    @Test
+    public void constructorShouldRejectNullStrategy() {
+        assertThrows(NullPointerException.class, () ->
+                new StrategyFactoryImpl(java.util.Collections.singletonList(null))
+        );
     }
 
 }

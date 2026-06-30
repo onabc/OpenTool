@@ -12,6 +12,6 @@ public class ThirdAction extends AbstractChainAction{
     @Override
     public Result<ChainResult> process(ChainRequest request, ChainContext context) {
         System.out.println("ThirdAction");
-        return Result.success();
+        return Result.success(new ChainResult());
     }
 }
