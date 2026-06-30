@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * 默认适配器执行器。
+ * 默认适配器执行器
  *
  * @param <S> 源对象类型
  * @param <T> 目标对象类型

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * 默认事件发布器。
+ * 默认事件发布器
  *
  * @param <E> 事件类型
  */

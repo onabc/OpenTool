@@ -6,6 +6,7 @@ import lombok.experimental.Accessors;
 
 /**
  * 响应结构体
+ *
  * @param <T> 包装类型
  */
 @Data
@@ -59,6 +60,7 @@ public class Result<T> {
     /**
      * 失败响应
      *
+     * @param resultCode 响应错误码
      * @return Result 响应结构
      */
     public static Result<?> fail(ResultCode resultCode) {
@@ -68,6 +70,7 @@ public class Result<T> {
     /**
      * 失败响应
      *
+     * @param message 失败信息
      * @return Result 响应结构
      */
     public static <T> Result<T> fail(String message) {
@@ -77,6 +80,8 @@ public class Result<T> {
     /**
      * 失败响应
      *
+     * @param code 响应状态码
+     * @param message 失败信息
      * @return Result 响应结构
      */
     public static <T> Result<T> fail(String code, String message) {

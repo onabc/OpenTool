@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * 责任链执行器。
+ * 责任链执行器
  *
  * @param <T> 请求对象类型
  * @param <U> 上下文对象类型
@@ -22,11 +22,11 @@ public class ChainExecutor<T, U, R> {
     private final List<? extends ChainAction<T, U, R>> actions;
 
     /**
-     * 按顺序执行已配置的责任链节点。
+     * 按顺序执行已配置的责任链节点
      * <p>
      * 当责任链为空时返回失败结果；当某个节点返回 {@code null} 或非成功结果时，
      * 触发该节点的失败回调，并按逆序触发已成功节点的回滚回调后短路返回；
-     * 当所有节点均执行成功时，返回最后一个成功节点的结果。
+     * 当所有节点均执行成功时，返回最后一个成功节点的结果
      *
      * @param request 请求对象
      * @param context 执行上下文
@@ -63,7 +63,7 @@ public class ChainExecutor<T, U, R> {
     }
 
     /**
-     * 按执行顺序的反方向回滚已成功节点。
+     * 按执行顺序的反方向回滚已成功节点
      *
      * @param request 请求对象
      * @param context 执行上下文

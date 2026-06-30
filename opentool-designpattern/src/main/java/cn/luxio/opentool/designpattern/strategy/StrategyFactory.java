@@ -3,7 +3,7 @@ package cn.luxio.opentool.designpattern.strategy;
 import java.util.Optional;
 
 /**
- * 策略工厂。
+ * 策略工厂
  *
  * @param <K> 策略标识类型
  * @param <S> 策略实现类型
@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface StrategyFactory<K, S extends Strategy<K>> {
 
     /**
-     * 根据策略标识查找策略。
+     * 根据策略标识查找策略
      *
      * @param key 策略标识
      * @return 匹配的策略；不存在时返回空
@@ -19,7 +19,7 @@ public interface StrategyFactory<K, S extends Strategy<K>> {
     Optional<S> find(K key);
 
     /**
-     * 根据策略标识获取策略。
+     * 根据策略标识获取策略
      *
      * @param key 策略标识
      * @return 匹配的策略
@@ -28,7 +28,7 @@ public interface StrategyFactory<K, S extends Strategy<K>> {
     S get(K key);
 
     /**
-     * 判断指定策略是否存在。
+     * 判断指定策略是否存在
      *
      * @param key 策略标识
      * @return 存在返回 {@code true}，否则返回 {@code false}

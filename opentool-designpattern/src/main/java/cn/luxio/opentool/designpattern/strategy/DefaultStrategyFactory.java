@@ -8,9 +8,9 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * 默认策略工厂实现。
+ * 默认策略工厂实现
  * <p>
- * 构造时会将策略列表按策略标识建立索引，并在发现空策略、空策略标识或重复策略标识时快速失败。
+ * 构造时会将策略列表按策略标识建立索引，并在发现空策略、空策略标识或重复策略标识时快速失败
  *
  * @param <K> 策略标识类型
  * @param <S> 策略实现类型
@@ -21,7 +21,7 @@ public class DefaultStrategyFactory<K, S extends Strategy<K>>
     private final Map<K, S> strategyMap;
 
     /**
-     * 创建默认策略工厂。
+     * 创建默认策略工厂
      *
      * @param strategies 策略列表
      */

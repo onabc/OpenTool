@@ -3,40 +3,45 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <packaging>jar</packaging>
-
     <parent>
         <groupId>cn.luxio</groupId>
         <artifactId>opentool-parent</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <artifactId>opentool-designpattern</artifactId>
+    <packaging>jar</packaging>
+
+    <artifactId>opentool-webapi</artifactId>
     <name>${project.artifactId}</name>
-    <description>设计模式封装</description>
+    <description>Web API 通用封装</description>
 
     <dependencies>
         <dependency>
             <groupId>cn.luxio</groupId>
             <artifactId>opentool-core</artifactId>
             <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <version>${spring-boot.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 </project>

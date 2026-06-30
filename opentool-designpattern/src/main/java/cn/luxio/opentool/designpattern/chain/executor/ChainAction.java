@@ -3,7 +3,7 @@ package cn.luxio.opentool.designpattern.chain.executor;
 import cn.luxio.opentool.core.response.Result;
 
 /**
- * 责任链节点。
+ * 责任链节点
  *
  * @param <T> 请求对象类型
  * @param <U> 上下文对象类型
@@ -11,7 +11,7 @@ import cn.luxio.opentool.core.response.Result;
  */
 public interface ChainAction<T, U, R> {
     /**
-     * 执行当前节点的业务逻辑。
+     * 执行当前节点的业务逻辑
      *
      * @param request 请求对象
      * @param context 执行上下文
@@ -20,7 +20,7 @@ public interface ChainAction<T, U, R> {
     Result<R> process(T request, U context);
 
     /**
-     * 当前节点执行失败时的回调。
+     * 当前节点执行失败时的回调
      *
      * @param request 请求对象
      * @param context 执行上下文
@@ -31,9 +31,9 @@ public interface ChainAction<T, U, R> {
     }
 
     /**
-     * 后续节点执行失败时的回滚回调。
+     * 后续节点执行失败时的回滚回调
      * <p>
-     * 仅已执行成功的节点会触发该回调，触发顺序与执行顺序相反。
+     * 仅已执行成功的节点会触发该回调，触发顺序与执行顺序相反
      *
      * @param request 请求对象
      * @param context 执行上下文

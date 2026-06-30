@@ -17,6 +17,7 @@
         <module>opentool</module>
         <module>opentool-core</module>
         <module>opentool-designpattern</module>
+        <module>opentool-webapi</module>
     </modules>
 
     <licenses>
@@ -42,7 +43,7 @@
 
     <properties>
         <!-- 项目版本号 -->
-        <revision>1.0.1</revision>
+        <revision>1.0.3</revision>
 
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -50,6 +51,9 @@
 
         <junit.version>5.10.3</junit.version>
         <lombok.version>1.18.34</lombok.version>
+
+        <spring.version>6.2.11</spring.version>
+        <spring-boot.version>3.5.9</spring-boot.version>
     </properties>
 
     <dependencies>
@@ -70,7 +74,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-<!--            <scope>test</scope>-->
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

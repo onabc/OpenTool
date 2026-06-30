@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * 默认装饰器执行器。
+ * 默认装饰器执行器
  *
  * @param <T> 被装饰对象类型
  */
